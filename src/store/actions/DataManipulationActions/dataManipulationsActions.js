@@ -1,12 +1,12 @@
-export const GET_DATA = "GET_DATA";
-export const DATA_FETCHED_SUCCESSFULLY = "DATA_FETCHED_SUCCESSFULLY";
-export const DATA_FETCHING_FAILURE = "DATA_FETCHING_FAILURE";
+import { RANGE_PRICE } from '../../constants';
 
-export const initialRangePrice = (min,max) =>{
-    console.log(min, max)
-    return { 
-        type: "RANGE_PRICE",
-        minPriceFrom:min,
-        minPriceTo:max,
-    }
+export function initialRangePrice(min, max) {
+	console.log('ovaj', min, max);
+	return {
+		type: RANGE_PRICE,
+		payload: {
+			minPriceFrom: min,
+			minPriceTo: max
+		}
+	};
 }
