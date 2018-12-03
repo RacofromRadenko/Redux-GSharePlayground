@@ -8,14 +8,11 @@ import { Provider } from 'react-redux';
 import { rootReducers } from './store/reducers/rootReducers';
 import createSagaMiddleware from 'redux-saga';
 import rootSaga from './store/saga/pullData';
-import { initialRangePrice } from './store/actions/DataManipulationActions/dataManipulationsActions';
 
 const sagaMiddleware = createSagaMiddleware();
 
 const store = createStore(rootReducers, applyMiddleware(sagaMiddleware));
 sagaMiddleware.run(rootSaga);
-
-store.dispatch(initialRangePrice(2, 10));
 const app = (
 	<Provider store={store}>
 		<App />

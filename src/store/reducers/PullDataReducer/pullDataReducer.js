@@ -1,39 +1,27 @@
-import { GET_DATA, DATA_FETCHED_SUCCESSFULLY, DATA_FETCHING_FAILURE, RANGE_PRICE } from '../../constants';
+import { SUCCESS, FAILURE } from '../../constants';
 
 const initialState = {
 	data: [],
 	error: null,
+	product_id: null,
 	minPrice: 0,
 	maxPrice: 1000
 };
 
-export const initialStoreDataReducer = (state = initialState, action) => {
-	switch (action.type) {
-		case GET_DATA:
-			console.log(action.data);
-			console.log(action.data.docs);
-			return {
-				...state
-			};
-
-		default:
-			return state;
-	}
-};
-
 export const fetchDataReducer = (state = initialState, action) => {
 	switch (action.type) {
-		case DATA_FETCHED_SUCCESSFULLY:
+		case SUCCESS:
 			console.log(action.data);
 			console.log(action.data.docs);
 			return {
 				...state,
 				data: action.data.docs,
 				page: action.data.page,
-				total: action.data.total
+				total: action.data.total,
+				product_id: null
 			};
 
-		case DATA_FETCHING_FAILURE:
+		case FAILURE:
 			// console.log(action.error);
 
 			return {
@@ -42,6 +30,7 @@ export const fetchDataReducer = (state = initialState, action) => {
 			};
 
 		default:
-			return state;
+			break;
 	}
+	return state;
 };
